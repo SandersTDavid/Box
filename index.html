@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+    <title>Cardboard Box</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar fixed-top navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand">FlexBox</a>
+      <div class="d-flex">
+        <button class="btn btn-outline-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Shopping Basket</button>
+      </div>
+    </div>
+  </nav>
+
+<!-- Shopping basket pop in from right side of page -->
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Shopping Basket</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <table class="box-order" id="box-order">
+      <tr>
+        <th>Box Type</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </table>
+
+    </div>
+  </div>
+
+<!-- form -->
+<div class="container pt-4 form-id" id="form-id">
+    <p class="fs-1 pt-5">Box Order</p> 
+  <div class="row g-3 needs-validation" novalidate>
+
+<!-- Text input for Box sizes -->
+    <p class="fs-3">Size</p> 
+    <div class="col-md-4">
+      <label for="validationCustom01" class="form-label">Length</label>
+      <input type="text" class="form-control" name="length" id="length" placeholder="0.01-10m" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustom02" class="form-label">Width</label>
+      <input type="text" class="form-control" name="width" id="width" placeholder="0.01-10m" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4">
+        <label for="validationCustom02" class="form-label">Height</label>
+        <input type="text" class="form-control" name="height" id="height" placeholder="0.01-10m" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+<!-- Range Slider for Cardboard Grade -->
+      <div class="col-md-12">
+        <div class="container-less">
+        <p class="fs-3 pt-5">Cardboard Grade</p> 
+        <label for="customRange3" class="form-label">1-5</label>
+        <input type="range" class="form-range slider" value="1" min="1" max="5" id="range">
+        <p class="fs-5">Grade: <span id="grade" value="1"></span></p>
+</div>
+</div>
+
+<!-- Radio for colour printing selection -->
+    <div class="col-md-3 pt-5">
+      <div class="fs-4 form-label">Colour Printing</div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" value="No Colour" name="flexRadioDefault" id="radio noColour" checked>
+        <label class="form-check-label" for="noColour">
+          No Colour
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" value="One Colour" name="flexRadioDefault" id="radio oneColour">
+        <label class="form-check-label" for="oneColour">
+          One Colour
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" value="Two Colours" name="flexRadioDefault" id="radio twoColours">
+        <label class="form-check-label" for="twoColours">
+          Two Colours
+        </label>
+      </div>
+    </div>
+
+<!-- Checkbox for reinforcements on box -->
+    <div class="col-md-3 pt-5">
+        <div class="fs-4 form-label">Reinforcement</div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="Bottom" id="bottom">
+            <label class="form-check-label" for="bottom">
+              Bottom
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="Corners" id="corners">
+            <label class="form-check-label" for="corners">
+              Corners
+            </label>
+          </div>
+    </div>
+
+<!-- Checkbox for sealable top on box -->
+    <div class="col-md-3 mb-3 pt-5">
+        <label class="fs-4 form-check-label" for="flexCheckDefault">
+            Sealable Top
+          </label>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="sealed">
+            <label class="form-check-label" for="sealed">
+            Top Sealed
+            </label>
+          </div>
+    </div>
+
+<!-- Dropdown select for quantity of boxes -->
+    <div class="col-md-3 mb-3 pt-5">
+        <label class="fs-4 form-check-label" for="flexCheckDefault">
+            Quantity
+          </label>
+        <select class="form-select" id="quantity" aria-label="Default select example">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="1">4</option>
+            <option value="2">5</option>
+            <option value="3">6</option>
+            <option value="1">7</option>
+            <option value="2">8</option>
+            <option value="3">9</option>
+            <option value="3">10+</option> 
+    <!-- Add onclick for more than 10 input -->
+          </select>
+    </div>
+<!-- Submit form button -->
+        <div class="col-12 mb-3 py-5">
+            <button onclick="addBoxToCart(), doTest(), resetPage(), getSlideValue()" id="btn" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+      </div>
+</div>
+<script type="text/javascript" src="js/box.js"></script>
+<script type="text/javascript" src="js/validation.js"></script>
+</body>
+</html>

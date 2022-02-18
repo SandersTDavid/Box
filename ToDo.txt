@@ -1,0 +1,8 @@
+Things to do:
+
+Add Total Shopping Cart Price
+JavaScript quantity of more than 10 boxes
+Prettify the code and javascript plugin for prettify/other
+validate the form
+
+Delete Box? add delete button and remove row onclick

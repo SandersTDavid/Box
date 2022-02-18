@@ -1,0 +1,12 @@
+.container-less{
+    max-width: 50%;
+}
+.box-order{
+    table-layout: fixed;
+    width: 300px;
+}
+
+th,
+td {
+  width: 100px;
+}
