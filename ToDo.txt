@@ -1,7 +1,4 @@
 Things to do:
 
-JavaScript quantity of more than 10 boxes
-validate the form and quantity box
+validate text inputs min 0.01 and max 10
 Prettify the code and javascript plugin for prettify/other
-
-Bonus: Delete Box? add delete button and remove row onclick

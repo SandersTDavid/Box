@@ -43,31 +43,23 @@
 <!-- form -->
 <div class="container pt-4 form-id" id="form-id">
     <p class="fs-1 pt-5">Box Order</p> 
-  <div class="row g-3 needs-validation" novalidate>
+  <div class="row g-3" novalidate>
 
 <!-- Text input for Box sizes -->
     <p class="fs-3">Size</p> 
     <div class="col-md-4">
-      <label for="validationCustom01" class="form-label">Length</label>
-      <input type="text" class="form-control" name="length" id="length" placeholder="0.01-10m" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
+      <label class="form-label">Length</label>
+      <input type="text" class="form-control" name="length" id="length" placeholder="0.01-10m" maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
     </div>
     <div class="col-md-4">
-      <label for="validationCustom02" class="form-label">Width</label>
-      <input type="text" class="form-control" name="width" id="width" placeholder="0.01-10m" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
+      <label class="form-label">Width</label>
+      <input type="text" class="form-control" name="width" id="width" placeholder="0.01-10m" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
     </div>
     <div class="col-md-4">
-        <label for="validationCustom02" class="form-label">Height</label>
-        <input type="text" class="form-control" name="height" id="height" placeholder="0.01-10m" required>
-        <div class="valid-feedback">
-          Looks good!
-        </div>
+        <label class="form-label">Height</label>
+        <input type="text" class="form-control" name="height" id="height" placeholder="0.01-10m" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
       </div>
+
 
 <!-- Range Slider for Cardboard Grade -->
       <div class="col-md-12">
