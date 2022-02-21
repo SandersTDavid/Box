@@ -33,9 +33,12 @@
         <th>Price</th>
       </tr>
     </table>
-
     </div>
-  </div>
+    <div class="offcanvas-footer total">
+      <p class="fs-5">Total: </p>
+      <p class="total-price" id="total-price">0</p>
+    </div>
+    </div>
 
 <!-- form -->
 <div class="container pt-4 form-id" id="form-id">
@@ -138,19 +141,19 @@
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value="1">4</option>
-            <option value="2">5</option>
-            <option value="3">6</option>
-            <option value="1">7</option>
-            <option value="2">8</option>
-            <option value="3">9</option>
-            <option value="3">10+</option> 
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10" id="ten">10+</option> 
     <!-- Add onclick for more than 10 input -->
           </select>
     </div>
 <!-- Submit form button -->
         <div class="col-12 mb-3 py-5">
-            <button onclick="addBoxToCart(), doTest(), resetPage(), getSlideValue()" id="btn" class="btn btn-primary">Submit</button>
+            <button id="btn" class="btn btn-primary">Submit</button>
             </div>
         </div>
       </div>

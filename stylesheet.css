@@ -10,3 +10,8 @@ th,
 td {
   width: 100px;
 }
+
+.total{
+  padding: 10%;
+  background-color: aliceblue;
+}

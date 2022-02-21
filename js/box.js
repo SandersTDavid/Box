@@ -4,7 +4,7 @@ function getErrorMessage() {
 };
 
 // Display the range value below the slider
-function getSlideValue(){
+function getSliderValue(){
     let slider = document.getElementById("range");
     let output = document.getElementById("grade");
     output.innerHTML = slider.value;
@@ -13,7 +13,7 @@ function getSlideValue(){
       output.innerHTML = this.value;
     }
 }
-getSlideValue();
+getSliderValue();
 
 
 // Get Colour printing selection from radio dial; returns String
@@ -129,7 +129,7 @@ function getMeterSquared() {
 
 // Get quantity of boxes times it by box price and return total price
     function setQuantityTimesPrice() {
-        totalBoxPrice = getQuantity() * setBoxPrice();
+        let totalBoxPrice = getQuantity() * setBoxPrice();
         totalBoxPrice = Math.round((totalBoxPrice + Number.EPSILON) * 100) / 100;
         return totalBoxPrice.toFixed(2);
 }   
@@ -144,43 +144,39 @@ function addBoxToCart() {
     let boxType = setBoxType();
     let quantity = getQuantity();
     let price = setQuantityTimesPrice();
-
     if(boxType != getErrorMessage()){
-    cell1.innerHTML = boxType;
-    cell2.innerHTML = quantity;
-    cell3.innerHTML = "£" + price;
+    cell1.textContent = boxType;
+    cell2.textContent = quantity;
+    cell3.textContent = "£" + price;
     }
     else 
     {
       alert(getErrorMessage());
     }
 }
-// Pick up from here; don't think it can be done unless with jQuery
-// function setTotalOrderPrice() {
-//     let price = setQuantityTimesPrice();
-//     let totalPrice;
-//     totalPrice += price;
-//     return totalPrice;
+ 
 
-// }
+function getBasketPrice() {
+    let getTotalPrice = document.getElementById("total-price").textContent;  
+    let getBoxPrice = setQuantityTimesPrice();
+    let stripGetTotalPrice = getTotalPrice;
+    if(getTotalPrice.length >1){
+    stripGetTotalPrice = getTotalPrice.substring(1);
+    }   
 
+    let parseTotalPrice = parseFloat(stripGetTotalPrice, 10);
+    let parseBoxPrice = parseFloat(getBoxPrice, 10);
 
-function doTest() {
-     console.log("Colour Printing: ", getColourPrinting());
-     console.log("Bottom: ", getReinforcedBottom());
-     console.log("Corners:", getReinforcedCorners());
-     console.log("Sealable Tops: ", getSealableTops());
-     console.log("GetMeterSquared: ", getMeterSquared());
-     console.log("GetGrade: ", getGradePrice());
-     console.log("GetExtras%: ", getExtrasPercent());
-     console.log("Box Price: £", setBoxPrice());
-     console.log("Quantity of Boxes: ", getQuantity());
-     console.log("Box Type: ", setBoxType());
-     console.log("Total Price: £", setQuantityTimesPrice());
-    //  console.log("Total Order Price: £", setTotalOrderPrice());
-     resetPage();
+    parseTotalPrice += parseBoxPrice;
+    return parseTotalPrice;
 }
 
+function updateBasketPrice() {
+    let basketPrice = getBasketPrice();
+    let decimalBasketPrice = Math.round((basketPrice + Number.EPSILON) * 100) / 100;
+    let stringBasketPrice = String(decimalBasketPrice.toFixed(2));
+    document.getElementById("total-price").textContent = "£" + stringBasketPrice;
+}
 
 
     // Reset the page button on click
@@ -203,3 +199,10 @@ function resetPage(){
     }
    }
 
+   document.getElementById("btn").onclick = function ()
+    {
+        addBoxToCart();
+        updateBasketPrice();
+        resetPage();
+        getSliderValue();
+    }
