@@ -1,4 +1,3 @@
 Things to do:
 
 validate text inputs min 0.01 and max 10
-Prettify the code and javascript plugin for prettify/other
